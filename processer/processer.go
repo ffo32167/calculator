@@ -22,6 +22,6 @@ func PickAction(action string) (Action, error) {
 	case "substraction":
 		return substraction.NewSubstraction(), nil
 	default:
-		return nil, errors.New("unknown action")
+		return nil, errors.New("cant PickAction, unknown action")
 	}
 }

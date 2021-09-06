@@ -1,6 +1,7 @@
 package server
 
 import (
+	"errors"
 	"fmt"
 
 	"github.com/ffo32167/calculator/processer"
@@ -9,7 +10,7 @@ import (
 func Serve(p processer.AdditionalData) (float64, error) {
 	a, b, err := getNumbers()
 	if err != nil {
-		return 0, fmt.Errorf("cant get numbers: %w", err)
+		return 0, fmt.Errorf("cant Serve: %w", err)
 	}
 	actionName := getActionName()
 	action, err := processer.PickAction(actionName)
@@ -20,6 +21,9 @@ func Serve(p processer.AdditionalData) (float64, error) {
 }
 
 func getNumbers() (a, b float64, err error) {
+	if false {
+		return 10, 3, errors.New("failed to getNumbers")
+	}
 	return 10, 3, nil
 }
 
