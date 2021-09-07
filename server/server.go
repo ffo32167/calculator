@@ -8,19 +8,20 @@ import (
 )
 
 func Serve(p processer.AdditionalData) (float64, error) {
-	a, b, err := getNumbers()
+	num1, num2, err := getNumbers()
 	if err != nil {
 		return 0, fmt.Errorf("cant Serve: %w", err)
 	}
 	actionName := getActionName()
-	action, err := processer.PickAction(actionName)
+	action, err := processer.PickAction(actionName, p)
 	if err != nil {
 		return 0, fmt.Errorf("cant Serve: %w", err)
 	}
-	return action.Calculate(a, b)
+	ad := processer.NewActionData(action, p)
+	return ad.Calculate(num1, num2)
 }
 
-func getNumbers() (a, b float64, err error) {
+func getNumbers() (num1, num2 float64, err error) {
 	if false {
 		return 10, 3, errors.New("failed to getNumbers")
 	}

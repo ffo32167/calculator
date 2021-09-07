@@ -7,6 +7,6 @@ func NewSubstraction() substraction {
 	return substraction{}
 }
 
-func (substraction) Calculate(first float64, last float64) (float64, error) {
-	return first - last, nil
+func (substraction) Calculate(num1, num2 float64) (float64, error) {
+	return num1 - num2, nil
 }

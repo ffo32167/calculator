@@ -7,18 +7,27 @@ import (
 	"github.com/ffo32167/calculator/processer/substraction"
 )
 
+type actionData struct {
+	Action
+	AdditionalData
+}
+
 type AdditionalData struct {
-	Precision int
+	Precision float64
 }
 
 type Action interface {
-	Calculate(float64, float64) (float64, error)
+	Calculate(num1, num2 float64) (float64, error)
 }
 
-func PickAction(action string) (Action, error) {
+func NewActionData(a Action, ad AdditionalData) actionData {
+	return actionData{a, ad}
+}
+
+func PickAction(action string, ad AdditionalData) (Action, error) {
 	switch action {
 	case "division":
-		return division.NewDivision(), nil
+		return division.NewDivision(ad.Precision), nil
 	case "substraction":
 		return substraction.NewSubstraction(), nil
 	default:
