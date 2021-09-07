@@ -12,6 +12,6 @@ func main() {
 	if err != nil {
 		fmt.Printf("can't process Serve: %s", err)
 	} else {
-		fmt.Printf("converted value: %f and it type is %T", v, v)
+		fmt.Printf("calcutated value: %f and it type is %T", v, v)
 	}
 }
