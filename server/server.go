@@ -12,13 +12,15 @@ func Serve(p processer.AdditionalData) (float64, error) {
 	if err != nil {
 		return 0, fmt.Errorf("cant Serve: %w", err)
 	}
+
 	actionName := getActionName()
-	action, err := processer.PickAction(actionName, p)
+
+	action, err := processer.NewAction(actionName, p)
 	if err != nil {
 		return 0, fmt.Errorf("cant Serve: %w", err)
 	}
-	ad := processer.NewActionData(action, p)
-	return ad.Calculate(num1, num2)
+
+	return action.Calculate(num1, num2)
 }
 
 func getNumbers() (num1, num2 float64, err error) {
